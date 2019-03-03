@@ -7,13 +7,37 @@ autoSetCanvasSize(yyy)
 listenToUser(yyy)
 
 var eraserEnalbed = false
-eraser.onclick = function () {
-    eraserEnalbed = true
-    actions.className = 'actions x'
-}
-brush.onclick = function () {
+pen.onclick = function(){
     eraserEnalbed = false
-    actions.className = 'actions'
+    pen.classList.add('active')
+    eraser.classList.remove('active')
+}
+eraser.onclick = function(){
+    eraserEnalbed = true
+    eraser.classList.add('active')
+    pen.classList.remove('active')
+}
+
+red.onclick = function(){
+    context.fillStyle = 'red'
+    context.strokeStyle = 'red'
+    red.classList.add('active')
+    green.classList.remove('active')
+    blue.classList.remove('active')
+}
+green.onclick = function(){
+    context.fillStyle = 'green'
+    context.strokeStyle = 'green'
+    red.classList.remove('active')
+    green.classList.add('active')
+    blue.classList.remove('active')
+}
+blue.onclick = function(){
+    context.fillStyle = 'blue'
+    context.strokeStyle = 'blue'
+    red.classList.remove('active')
+    green.classList.remove('active')
+    blue.classList.add('active')
 }
 /******************************************************/
 
@@ -42,7 +66,6 @@ function drawCircle(x, y, radius) {
 
 function drawLine(x1, y1, x2, y2) {
     context.beginPath()
-    context.strokeStyle = 'black'
     context.moveTo(x1, y1)
     context.lineWidth = 5
     context.lineTo(x2, y2)
